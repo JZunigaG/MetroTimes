@@ -1,0 +1,15 @@
+INSERT INTO STATIONS(name,location) VALUES('Colonia Jardín (correspondencia con la línea 10 y con Metro Ligero 2)',ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Ciudad de la Imagen'                                                  ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('José Isbert, Ciudad del Cine'                                         ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Cocheras'                                                             ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Retamares'                                                            ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Montepríncipe'                                                        ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Ventorro del Cano'                                                    ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Prado del Espino'                                                     ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Cantabria'                                                            ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Ferial de Boadilla'                                                   ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Boadilla Centro'                                                      ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Nuevo Mundo'                                                          ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Siglo XXI'                                                            ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Infante Don Luís'                                                     ,ST_GeomFromText('POINT()', 4326));
+INSERT INTO STATIONS(name,location) VALUES('Puerta de Boadilla'                                                   ,ST_GeomFromText('POINT()', 4326));
