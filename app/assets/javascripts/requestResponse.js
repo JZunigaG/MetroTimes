@@ -36,7 +36,7 @@ var requestToServer = {
 		{
 			contentString = '';
 
-			console.log(stations[elem].id + "_" + stations[elem].name + "_" + stations[elem].latitude + "_" + stations[elem].longitude);
+			console.log(stations[elem].station_id + "_" + stations[elem].name + "_" + stations[elem].latitude + "_" + stations[elem].longitude);
 			
 			mapOptions = usersPositionManager.init_mapOptions(stations[elem]);
 
@@ -54,7 +54,7 @@ var requestToServer = {
 
 				lineId = stations[elem].lines[line].line_id;
 
-				contentString += ('<button onclick="requestToServer.getLinesDataTimes(' + stations[elem].id + ',' + lineId + ',' + '\'' + lineName + '\')">' + lineName +  '</button>' + '<br>' + '<br>');
+				contentString += ('<button onclick="requestToServer.getLinesDataTimes(' + stations[elem].station_id + ',' + lineId + ',' + '\'' + lineName + '\')">' + lineName +  '</button>' + '<br>' + '<br>');
 			}
 
 			contentString += '</article>';
@@ -82,9 +82,9 @@ var requestToServer = {
 	,
 	parseLinesDataTimes: function(linesData)
 	{
-		//Lungo.Router.section("second");
-
 		console.log("Received lines Data....." + linesData);
+
+		Lungo.Router.section("second");
 
 	}
 }
