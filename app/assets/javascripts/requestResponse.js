@@ -3,12 +3,12 @@
 
 var requestToServer = {
 
-	getNearbyStations: function(lat,longi)
+	getNearbyStations: function(_latitude,_longitude)
 	{
 		// Ruta
 		var url = "http://localhost:3000/stations"
 
-		var data = {latitude: lat,longitude: longi};
+		var data = {latitude: _latitude,longitude: _longitude};
 
 		Lungo.Service.json(url,data,this.parseNearbyStations);
 	},
@@ -27,6 +27,8 @@ var requestToServer = {
 
 		var lineName = ""
 
+		var lineId = 0
+
 
 
 
@@ -34,7 +36,7 @@ var requestToServer = {
 		{
 			contentString = '';
 
-			console.log(stations[elem].name + "-->" + stations[elem].latitude + "-->" + stations[elem].longitude);
+			console.log(stations[elem].id + "_" + stations[elem].name + "_" + stations[elem].latitude + "_" + stations[elem].longitude);
 			
 			mapOptions = usersPositionManager.init_mapOptions(stations[elem]);
 
@@ -50,12 +52,39 @@ var requestToServer = {
 			{
 				lineName =  stations[elem].lines[line].line_name;
 
-				contentString += ('<button onclick="usersPositionManager.prueba()">' + lineName +  '</button>' + '<br>' + '<br>');
+				lineId = stations[elem].lines[line].line_id;
+
+				contentString += ('<button onclick="requestToServer.getLinesDataTimes(' + stations[elem].id + ',' + lineId + ',' + '\'' + lineName + '\')">' + lineName +  '</button>' + '<br>' + '<br>');
 			}
 
 			contentString += '</article>';
 
 			usersPositionManager.add_marker_Listener(marker,'click',contentString);
 		}
+	}
+	,
+	getLinesDataTimes: function(_idStation,_idLine,_lineName)
+	{
+		var date = new Date();
+
+		var formattedTime = date.getHours() + ':' + date.getMinutes();
+
+		var url = "http://localhost:3000/stations/" + _idStation + "/lines/" + _idLine;
+
+		var data = {current_time: formattedTime};
+
+
+
+		console.log("Boton de linea pulsado " + _idStation + "_" + _idLine + "_" + _lineName + "_" + formattedTime);
+
+		Lungo.Service.json(url,data,this.parseLinesDataTimes);
+	}
+	,
+	parseLinesDataTimes: function(linesData)
+	{
+		//Lungo.Router.section("second");
+
+		console.log("Received lines Data....." + linesData);
+
 	}
 }

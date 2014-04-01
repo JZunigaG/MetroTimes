@@ -191,13 +191,5 @@ var usersPositionManager =
 
 	} // End distanceRequestProcessing
 
-	,
-
-	prueba: function()
-	{
-		console.log("Boton de linea pulsado ")
-		Lungo.Router.section("second")
-	}
-
 } // End usersPositionManager
 

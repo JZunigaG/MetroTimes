@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331232537) do
+ActiveRecord::Schema.define(version: 20140401155514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140331232537) do
   add_index "stations", ["location"], :name => "index_stations_on_location"
 
   create_table "time_scheduleds", force: true do |t|
+    t.integer  "line_id"
     t.time     "start_time_slot"
     t.time     "end_time_slot"
     t.string   "periodicity"

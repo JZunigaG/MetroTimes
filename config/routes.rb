@@ -1,10 +1,14 @@
 MetroTimes::Application.routes.draw do
 
+  get "lines/show"
     # To launch lungo client application
     get "/client" => "static_apps#index"
 
 
   	get "/stations" => "stations#index"
+
+
+    get "/stations/:station_id/lines/:id" => "lines#show"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
