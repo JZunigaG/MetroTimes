@@ -15,6 +15,7 @@
 //= require quo.debug
 //= require lungo.debug
 //= require initLungo
+//= require about
 //= require requestResponse
 //= require userPositionManager
 //= require init
