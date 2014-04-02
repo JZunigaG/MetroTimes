@@ -1,6 +1,5 @@
 MetroTimes::Application.routes.draw do
 
-  get "lines/show"
     # To launch lungo client application
     get "/client" => "static_apps#index"
 

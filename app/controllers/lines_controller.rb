@@ -1,5 +1,6 @@
 class LinesController < ApplicationController
 
+	# return times_scheduled by line with current_time parameter
 	def show
 
 		if @station = Station.find_by(id: params[:station_id])	

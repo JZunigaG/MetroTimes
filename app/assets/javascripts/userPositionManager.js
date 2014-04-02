@@ -4,47 +4,44 @@
 
 var usersPositionManager = 
 {
-	//v_stations: [],
-
 	v_map: [],
 
 	v_User: [],
 
-	to_fill: function(object,latitude,longitude)
+	// Create a hash object with latitude and longitude
+	to_fill: function(object,
+					  latitude,
+					  longitude)
 	{
 		return {"object": object,"latitude": latitude,"longitude": longitude};
 	},
-
-	/*
-	save: function(station)
-	{
-		this.v_stations.push(station);
-
-		var data = JSON.stringify(this.v_stations);
-
-		console.log("Save: " + data);
-
-		window.localStorage.setItem("stations",data);
-	},
-	*/
 
 	getGeolocation: function() 
 	{
 		if(!navigator.geolocation)
 		{
-			console.log("Geolocation are not supported");
+			alert("Geolocation are not supported.");
+			//console.log("Geolocation are not supported.");
 
 			return;
 		}
 
+		// Two callbacks funtions to response successfully and error
 		navigator.geolocation.getCurrentPosition(this.onSuccess,this.onError);
 	},
 
+	// if geolocation response is true,create user location,store it in a map
 	onSuccess: function(position)
 	{
-		console.log(position.coords.latitude,position.coords.longitude);
+		var user = {};
 
-		var User = usersPositionManager.to_fill("User",position.coords.latitude,position.coords.longitude);
+
+
+		//console.log(position.coords.latitude,position.coords.longitude);
+
+		user = usersPositionManager.to_fill("User",
+											position.coords.latitude,
+											position.coords.longitude);
 
 
 		if(usersPositionManager.v_User.length > 0)
@@ -52,9 +49,9 @@ var usersPositionManager =
 			usersPositionManager.v_User.pop();
 		}
 
-		usersPositionManager.v_User.push(User)
+		usersPositionManager.v_User.push(user)
 
-		usersPositionManager.userLocation(User);
+		usersPositionManager.userLocation(user);
 	},
 
 	onError: function(error)
@@ -78,7 +75,11 @@ var usersPositionManager =
 		return map;
 	},
 
-	add_marker: function(pos,map,object,image)
+	// Add a custom marker in a google map with DROP animation
+	add_marker: function(pos,
+						 map,
+						 object,
+						 image)
 	{ 
 		var marker = new google.maps.Marker({position: pos,
 		      								 map: map,
@@ -95,7 +96,10 @@ var usersPositionManager =
 		return new google.maps.InfoWindow({content: contentString,maxWidth: 300});
 	},
 
-	add_marker_Listener: function(marker,event,contentString)
+	// when an onclick event ocurrs on a marker an infowindow is opened with lines by station 
+	add_marker_Listener: function(marker,
+								  event,
+								  contentString)
 	{
 		var infoWindow = usersPositionManager.add_marker_infoWindow(contentString);
 
@@ -105,6 +109,7 @@ var usersPositionManager =
 		});
 	},
 
+	// Add user to map and request nearby stations to rails server with latitude and longitude
 	userLocation: function(user)
 	{
 		var initOptions = this.init_mapOptions(user);
@@ -114,16 +119,10 @@ var usersPositionManager =
 			this.add_map(initOptions);
 		}
 
-		/*var image = $$("#main_section").data('marker-user');
-
-		this.add_marker(initOptions.center,
-						this.v_map[0],
-						user.object,
-						initOptions.center,image);*/
-
 		requestToServer.getNearbyStations(user.latitude,user.longitude);
 	},
 
+	// Add user marker,getting custom marker image from main_section - marker-user property with quoJS sintax
 	add_marker_user: function()
 	{
 		var image = $$("#main_section").data('marker-user');
@@ -135,7 +134,7 @@ var usersPositionManager =
 
 	},
 
-
+	// Not yet used
 	getDistance: function()
 	{
 		var origin1 = new google.maps.LatLng(this.v_User[0].latitude,this.v_User[0].longitude);
@@ -163,7 +162,8 @@ var usersPositionManager =
 		  	);
 
 	}, // End getDistance
-
+	
+	// Not yet used
 	distanceRequestProcessing: function(response,status)
 	{
 		var origins 	 = [];
