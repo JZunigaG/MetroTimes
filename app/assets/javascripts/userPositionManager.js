@@ -78,11 +78,13 @@ var usersPositionManager =
 		return map;
 	},
 
-	add_marker: function(map,object,pos)
+	add_marker: function(pos,map,object,image)
 	{ 
 		var marker = new google.maps.Marker({position: pos,
 		      								 map: map,
-		      								 title: object
+		      								 title: object,
+		      								 animation: google.maps.Animation.DROP,
+		      								 icon: image
 		  									});
 
 		return marker;
@@ -112,11 +114,27 @@ var usersPositionManager =
 			this.add_map(initOptions);
 		}
 
+		/*var image = $$("#main_section").data('marker-user');
 
-		this.add_marker(this.v_map[0],user.object,initOptions.center);
+		this.add_marker(initOptions.center,
+						this.v_map[0],
+						user.object,
+						initOptions.center,image);*/
 
 		requestToServer.getNearbyStations(user.latitude,user.longitude);
 	},
+
+	add_marker_user: function()
+	{
+		var image = $$("#main_section").data('marker-user');
+
+		this.add_marker(this.v_map[0].center,
+						this.v_map[0],
+						this.v_User[0].object,
+						image);
+
+	},
+
 
 	getDistance: function()
 	{

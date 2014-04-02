@@ -40,11 +40,12 @@ var requestToServer = {
 			
 			mapOptions = usersPositionManager.init_mapOptions(stations[elem]);
 
+			var image = $$("#main_section").data('marker-station');
 
-
-			marker = usersPositionManager.add_marker(usersPositionManager.v_map[0],
+			marker = usersPositionManager.add_marker(mapOptions.center,
+													 usersPositionManager.v_map[0],
 													 stations[elem].name,
-													 mapOptions.center);
+													 image);
 
 			contentString = '<article id="marker_section">';
 
@@ -63,6 +64,8 @@ var requestToServer = {
 
 			usersPositionManager.add_marker_Listener(marker,'click',contentString);
 		}
+
+		usersPositionManager.add_marker_user();
 	}
 	,
 	getLinesDataTimes: function(_idStation,_idLine,_lineName)
@@ -96,15 +99,18 @@ var requestToServer = {
 
 		$$("#linesdata").empty();
 
-		$$("#linesdata").append('<header><h1>' + linesData[0].line_name +'</h1></header><br>');
-		$$("#linesdata").append('<h2>Station: ' + linesData[0].station_name + '</h2><br>')
+		$$("#linesdata").append('<ul><li.theme><strong><h2>' + linesData[0].line_name + 'Station: ' + linesData[0].station_name + '</h2></li>');
 
 		for(nData = 0;nData < linesData.length;nData++)
 		{
-			$$("#linesdata").append('<h3>Direction: ' + linesData[nData].direction + '</h3>');
-			$$("#linesdata").append('<h4>Time Slot: From ' + linesData[nData].start_time_slot + ' to ' + linesData[nData].end_time_slot + '</h4>');
-			$$("#linesdata").append('<h4>Periodicity: ' + linesData[nData].periodicity + '</h4><br><br>');
+			$$("#linesdata").append('<li><h4>Direction: ' + linesData[nData].direction + '<h4></li>');
+
+			$$("#linesdata").append('<li.theme><h5>Time Slot: From ' + linesData[nData].start_time_slot + ' to ' + linesData[nData].end_time_slot + '</h5></li>');
+
+			$$("#linesdata").append('<li.theme><h5>Periodicity: ' + linesData[nData].periodicity + '</h5></li>');
 		}
+
+		$$("#linesdata").append('</ul>');
 
 		Lungo.Router.section("second");
 

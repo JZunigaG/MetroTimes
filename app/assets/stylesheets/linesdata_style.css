@@ -1,0 +1,23 @@
+.linesdata_styles
+{
+	text-align: center;
+}
+
+h2
+{
+	color: red;
+
+	text-shadow: 5px 5px 5px grey;
+}
+
+h4
+{
+	color: blue;
+
+	text-shadow: 5px 5px 5px grey;
+}
+
+h5
+{
+	color:green;
+}
