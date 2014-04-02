@@ -6,10 +6,7 @@ class LinesController < ApplicationController
 
 			if @line = @station.lines.find_by(id: params[:id])
 
-				#@times_scheduled_by_line = @line.time_scheduleds.getLinesDataBySlot(params[:current_time]).order(:start_time_slot,:end_time_slot).limit(4)
 				@times_scheduled_by_line = @line.time_scheduleds.getLinesDataBySlot(params[:current_time])
-
-				#render json: @times_scheduled_by_line
 
 			else
 

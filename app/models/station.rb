@@ -7,7 +7,7 @@ class Station < ActiveRecord::Base
 
 
 	scope :getNearbyStations,lambda(){ |latitude,longitude|
-		where(["ST_DWithin(location,ST_GeomFromText('POINT(? ?)',4326),500)",longitude,latitude]).includes(:lines)
+		where(["ST_DWithin(location,ST_GeomFromText('POINT(? ?)',4326),750)",longitude,latitude]).includes(:lines)
 	}
 
 

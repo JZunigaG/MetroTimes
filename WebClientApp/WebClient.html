@@ -39,7 +39,7 @@
 
 		<section id="main_section">
 
-		    <header data-title="example">
+		    <header data-title="MetroTimes">
 
 		        <nav>
 		        
@@ -88,18 +88,33 @@
 
 
 		<section id="second">
-		    <header data-back="home"></header>
-		    <article id="second_1" class="active">
-		        Same as header:
-		        <button data-view-section="back" data-icon="left" data-label="Return to previous section"></button>
-		    </article>
+
+		    <header data-back="home">
+		        <button data-view-section="back" data-icon="right" data-label="Back"></button>		    	
+
+		    </header>
+
+			<article id="linesdata" class="active">
+				
+
+			</article>
+
+		    <footer>
+		        <nav>
+		        <a href="#" data-view-article="home-menu" data-icon="menu">Home</a>
+		        <a href="#" data-view-article="explore-menu" data-icon="globe">Explore</a>
+		        <a href="#" data-view-article="profile-menu" data-icon="user">Profile</a>            
+		        </nav>
+		    </footer>  
+
 		</section>
 
-<!--
+
     	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"> </script>
 	<%= javascript_include_tag "application"%>
 
--->
+
+<!--
 		<script src="assets/quo.debug.js"></script>
 
 		<script src="assets/lungo.debug.js"></script>
@@ -113,7 +128,7 @@
     	<script src="assets/userPositionManager.js" type = "text/javascript"> </script>
 
     	<script src="assets/init.js" type = "text/javascript"> </script>
-
+-->
 	</body>
 
 </html>

@@ -40,6 +40,8 @@ var requestToServer = {
 			
 			mapOptions = usersPositionManager.init_mapOptions(stations[elem]);
 
+
+
 			marker = usersPositionManager.add_marker(usersPositionManager.v_map[0],
 													 stations[elem].name,
 													 mapOptions.center);
@@ -82,7 +84,27 @@ var requestToServer = {
 	,
 	parseLinesDataTimes: function(linesData)
 	{
+		var nData = 0;
+
+
+		if(linesData.length <= 0)
+		{
+			return;
+		}
+
 		console.log("Received lines Data....." + linesData);
+
+		$$("#linesdata").empty();
+
+		$$("#linesdata").append('<header><h1>' + linesData[0].line_name +'</h1></header><br>');
+		$$("#linesdata").append('<h2>Station: ' + linesData[0].station_name + '</h2><br>')
+
+		for(nData = 0;nData < linesData.length;nData++)
+		{
+			$$("#linesdata").append('<h3>Direction: ' + linesData[nData].direction + '</h3>');
+			$$("#linesdata").append('<h4>Time Slot: From ' + linesData[nData].start_time_slot + ' to ' + linesData[nData].end_time_slot + '</h4>');
+			$$("#linesdata").append('<h4>Periodicity: ' + linesData[nData].periodicity + '</h4><br><br>');
+		}
 
 		Lungo.Router.section("second");
 

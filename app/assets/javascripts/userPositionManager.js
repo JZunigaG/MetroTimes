@@ -112,6 +112,7 @@ var usersPositionManager =
 			this.add_map(initOptions);
 		}
 
+
 		this.add_marker(this.v_map[0],user.object,initOptions.center);
 
 		requestToServer.getNearbyStations(user.latitude,user.longitude);
